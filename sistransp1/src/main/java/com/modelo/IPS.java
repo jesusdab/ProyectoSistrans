@@ -14,15 +14,15 @@ public class IPS {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer nit;
+    private Long nit;
 
     private String nombre;
     private String direccionIPS;
-    private Integer telefono ;
+    private Long telefono ;
     private String tipo;
     private List<String> serviciosPrestados;
 
-    public IPS(String nombre, String direccionIPS, Integer telefono, String tipo, List<String> serviciosPrestados) {
+    public IPS(String nombre, String direccionIPS, Long telefono, String tipo, List<String> serviciosPrestados) {
         this.nombre = nombre;
         this.direccionIPS = direccionIPS;
         this.telefono = telefono;
@@ -35,11 +35,11 @@ public class IPS {
     
     
     // Getters y Setters
-    public Integer getNit() {
+    public Long getNit() {
         return nit;
     }
 
-    public void setNit(Integer nit) {
+    public void setNit(Long nit) {
         this.nit = nit;
     }
 
@@ -51,11 +51,11 @@ public class IPS {
         this.direccionIPS = direccionIPS;
     }
 
-    public Integer getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 
