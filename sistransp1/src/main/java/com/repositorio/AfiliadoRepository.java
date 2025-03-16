@@ -1,5 +1,6 @@
 package com.repositorio;
 
+import java.sql.Date;
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,13 +22,13 @@ public interface AfiliadoRepository extends JpaRepository<Afiliado, Long> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO AFILIADO (idPaciente, nombre, tipoIdentificacion, numeroIdentificacion, fechaNacimiento, direccionResidencia, telefono, empresaAfiliado, tipoParentesco, AFILIADO_idPaciente) VALUES (:idPaciente, :nombre, :tipoIdentificacion, :numeroIdentificacion, :fechaNacimiento, :direccionResidencia, :telefono, :empresaAfiliado, :tipoParentesco, :idContribuyente)", nativeQuery = true)
-    void insertarAfiliado(@Param("idPaciente") long idPaciente, 
+    void insertarAfiliado(@Param("idPaciente") Long idPaciente, 
                           @Param("nombre") String nombre, 
                           @Param("tipoIdentificacion") String tipoIdentificacion, 
-                          @Param("numeroIdentificacion") long numeroIdentificacion, 
-                          @Param("fechaNacimiento") String fechaNacimiento, 
+                          @Param("numeroIdentificacion") Long numeroIdentificacion, 
+                          @Param("fechaNacimiento") Date fechaNacimiento, 
                           @Param("direccionResidencia") String direccionResidencia, 
-                          @Param("telefono") long telefono, 
+                          @Param("telefono") Long telefono, 
                           @Param("empresaAfiliado") String empresaAfiliado, 
                           @Param("tipoParentesco") String tipoParentesco, 
                           @Param("idContribuyente") Long idContribuyente);
@@ -35,13 +36,13 @@ public interface AfiliadoRepository extends JpaRepository<Afiliado, Long> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE AFILIADO SET nombre = :nombre, tipoIdentificacion = :tipoIdentificacion, numeroIdentificacion = :numeroIdentificacion, fechaNacimiento = :fechaNacimiento, direccionResidencia = :direccionResidencia, telefono = :telefono, empresaAfiliado = :empresaAfiliado, tipoParentesco = :tipoParentesco, AFILIADO_idPaciente = :idContribuyente WHERE idPaciente = :idPaciente", nativeQuery = true)
-    void actualizarAfiliado(@Param("idPaciente") long idPaciente, 
+    void actualizarAfiliado(@Param("idPaciente") Long idPaciente, 
                             @Param("nombre") String nombre, 
                             @Param("tipoIdentificacion") String tipoIdentificacion, 
-                            @Param("numeroIdentificacion") long numeroIdentificacion, 
-                            @Param("fechaNacimiento") String fechaNacimiento, 
+                            @Param("numeroIdentificacion") Long numeroIdentificacion, 
+                            @Param("fechaNacimiento") Date fechaNacimiento, 
                             @Param("direccionResidencia") String direccionResidencia, 
-                            @Param("telefono") long telefono, 
+                            @Param("telefono") Long telefono, 
                             @Param("empresaAfiliado") String empresaAfiliado, 
                             @Param("tipoParentesco") String tipoParentesco, 
                             @Param("idContribuyente") Long idContribuyente);

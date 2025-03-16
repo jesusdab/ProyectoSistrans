@@ -1,6 +1,7 @@
 package com.modelo;
 
-import java.util.Date;
+
+import java.sql.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
