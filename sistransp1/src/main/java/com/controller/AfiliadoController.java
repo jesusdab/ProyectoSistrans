@@ -61,7 +61,7 @@ public class AfiliadoController{
         return "redirect:/afiliados";
     }
 
-    @GetMapping("/bares/{id}/delete")
+    @GetMapping("/afiliados/{id}/delete")
     public String afiliadoEliminar(@PathVariable("id") Long id) {
         afiliadoRepository.eliminarAfiliado(id);
         return "redirect:/afiliados";
