@@ -6,22 +6,28 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.util.List;
+
 @Entity
 @Table(name = "ips_registradas")
 public class IPS {
 
     @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer nit;
 
+    private String nombre;
     private String direccionIPS;
-    private String ubicacion;
+    private Integer telefono ;
     private String tipo;
+    private List<String> serviciosPrestados;
 
-    public IPS(String direccionIPS, String ubicacion, String tipo) {
+    public IPS(String nombre, String direccionIPS, Integer telefono, String tipo, List<String> serviciosPrestados) {
+        this.nombre = nombre;
         this.direccionIPS = direccionIPS;
-        this.ubicacion = ubicacion;
+        this.telefono = telefono;
         this.tipo = tipo;
+        this.serviciosPrestados = serviciosPrestados;
     }
 
     public IPS() 
@@ -29,35 +35,51 @@ public class IPS {
     
     
     // Getters y Setters
-    public Integer getId() {
-        return id;
+    public Integer getNit() {
+        return nit;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setNit(Integer nit) {
+        this.nit = nit;
     }
 
-    public String getDireccionIP() {
+    public String getDireccionIPS() {
         return direccionIPS;
     }
 
-    public void setDireccionIP(String direccionIPS) {
+    public void setDireccionIPS(String direccionIPS) {
         this.direccionIPS = direccionIPS;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
+    public Integer getTelefono() {
+        return telefono;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setTelefono(Integer telefono) {
+        this.telefono = telefono;
     }
 
     public String getTipo() {
         return tipo;
     }
 
-    public void setTipoConexion(String tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public List<String> getServiciosPrestados() {
+        return serviciosPrestados;
+    }
+
+    public void setServiciosPrestados(List<String> serviciosPrestados) {
+        this.serviciosPrestados = serviciosPrestados;
     }
 }
