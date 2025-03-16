@@ -38,10 +38,9 @@ public class Afiliado {
     public Afiliado() 
     {;}
 
-    public Afiliado(Long idPaciente, String nombre, String tipoIdentificacion, Long numeroIdentificacion, 
+    public Afiliado(String nombre, String tipoIdentificacion, Long numeroIdentificacion,
                     Date fechaNacimiento, String direccionResidencia, Long telefono, String empresaAfiliado, 
                     String tipoParentesco, Long idContribuyente) {
-        this.idPaciente = idPaciente;
         this.nombre = nombre;
         this.tipoIdentificacion = tipoIdentificacion;
         this.numeroIdentificacion = numeroIdentificacion;

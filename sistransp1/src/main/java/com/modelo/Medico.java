@@ -12,7 +12,7 @@ public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String numeroRegistroMedico;
+    private Long numeroRegistroMedico;
 
     private String nombre;
 
@@ -25,19 +25,18 @@ public class Medico {
     public Medico() 
     {;}
 
-    public Medico(String numeroRegistroMedico, String nombre, String tipoIdentificacion, Long numeroIdentificacion, String especialidad) {
-        this.numeroRegistroMedico = numeroRegistroMedico;
+    public Medico(String nombre, String tipoIdentificacion, Long numeroIdentificacion, String especialidad) {
         this.nombre = nombre;
         this.tipoIdentificacion = tipoIdentificacion;
         this.numeroIdentificacion = numeroIdentificacion;
         this.especialidad = especialidad;
     }
 
-    public String getNumeroRegistroMedico() {
+    public Long getNumeroRegistroMedico() {
         return numeroRegistroMedico;
     }
 
-    public void setNumeroRegistroMedico(String numeroRegistroMedico) {
+    public void setNumeroRegistroMedico(Long numeroRegistroMedico) {
         this.numeroRegistroMedico = numeroRegistroMedico;
     }
 

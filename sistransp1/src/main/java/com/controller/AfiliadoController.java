@@ -55,7 +55,7 @@ public class AfiliadoController{
 
     @PostMapping("/afiliados/{id}/edit/save")
     public String afiliadoEditarGuardar(@PathVariable("id") Long id,@ModelAttribute Afiliado afiliado){
-        afiliadoRepository.actualizarAfiliado(afiliado.getIdPaciente(),afiliado.getNombre(),afiliado.getTipoIdentificacion(),
+        afiliadoRepository.actualizarAfiliado(id,afiliado.getNombre(),afiliado.getTipoIdentificacion(),
         afiliado.getNumeroIdentificacion(),afiliado.getFechaNacimiento(),afiliado.getDireccionResidencia(),afiliado.getTelefono(),afiliado.getEmpresaAfiliado(),afiliado.getTipoParentesco(),afiliado.getIdContribuyente());
 
         return "redirect:/afiliados";

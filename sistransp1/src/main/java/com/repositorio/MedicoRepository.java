@@ -21,19 +21,19 @@ public interface MedicoRepository extends JpaRepository<Medico, String> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO MEDICO (numeroRegistroMedico, nombre, tipoIdentificacion, numeroIdentificacion, especialidad) VALUES (:numeroRegistroMedico, :nombre, :tipoIdentificacion, :numeroIdentificacion, :especialidad)", nativeQuery = true)
-    void insertarMedico(@Param("numeroRegistroMedico") String numeroRegistroMedico, 
+    void insertarMedico(@Param("numeroRegistroMedico") Long numeroRegistroMedico,
                         @Param("nombre") String nombre, 
                         @Param("tipoIdentificacion") String tipoIdentificacion, 
-                        @Param("numeroIdentificacion") long numeroIdentificacion, 
+                        @Param("numeroIdentificacion") Long numeroIdentificacion,
                         @Param("especialidad") String especialidad);
 
     @Modifying
     @Transactional
     @Query(value = "UPDATE MEDICO SET nombre = :nombre, tipoIdentificacion = :tipoIdentificacion, numeroIdentificacion = :numeroIdentificacion, especialidad = :especialidad WHERE numeroRegistroMedico = :numeroRegistroMedico", nativeQuery = true)
-    void actualizarMedico(@Param("numeroRegistroMedico") String numeroRegistroMedico, 
+    void actualizarMedico(@Param("numeroRegistroMedico") Long numeroRegistroMedico,
                           @Param("nombre") String nombre, 
                           @Param("tipoIdentificacion") String tipoIdentificacion, 
-                          @Param("numeroIdentificacion") long numeroIdentificacion, 
+                          @Param("numeroIdentificacion") Long numeroIdentificacion,
                           @Param("especialidad") String especialidad);
 
     @Modifying

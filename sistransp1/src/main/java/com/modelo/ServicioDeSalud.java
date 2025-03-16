@@ -19,8 +19,7 @@ public class ServicioDeSalud {
     public ServicioDeSalud() 
     {;}
 
-    public ServicioDeSalud(Long idServicio, String tipoServicio) {
-        this.idServicio = idServicio;
+    public ServicioDeSalud(String tipoServicio) {
         this.tipoServicio = tipoServicio;
     }
 

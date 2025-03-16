@@ -31,8 +31,7 @@ public class Cita {
     public Cita() 
     {;}
 
-    public Cita(Long idCita, Date fecha, Date hora, Long ipsNit, Long idOrdenServicio, Long numeroRegistroMedico, Long idPacienteAfiliado) {
-        this.idCita = idCita;
+    public Cita(Date fecha, Date hora, Long ipsNit, Long idOrdenServicio, Long numeroRegistroMedico, Long idPacienteAfiliado) {
         this.fecha = fecha;
         this.hora = hora;
         this.ipsNit = ipsNit;
