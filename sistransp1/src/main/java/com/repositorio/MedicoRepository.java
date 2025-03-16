@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.modelo.Medico;
 
-public interface MedicoRepository extends JpaRepository<Medico, String> {
+public interface MedicoRepository extends JpaRepository<Medico, Long> {
 
     @Query(value = "SELECT * FROM MEDICO", nativeQuery = true)
     Collection<Medico> obtenerTodosLosMedicos();

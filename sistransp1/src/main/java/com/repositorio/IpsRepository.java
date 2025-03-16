@@ -12,7 +12,7 @@ import com.modelo.IPS;
 
 import jakarta.transaction.Transactional;
 
-public interface IpsRepository extends JpaRepository<IPS,Integer>{
+public interface IpsRepository extends JpaRepository<IPS,Long>{
 
     @Query(value="SELECT * FROM IPS",nativeQuery=true)
     Collection<IPS> darIPSs();
