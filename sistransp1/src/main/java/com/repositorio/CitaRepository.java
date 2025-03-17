@@ -58,7 +58,7 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
              + "FROM CITA c "
              + "JOIN ORDEN_DE_SERVICIO o ON c.ORDEN_DE_SERVICIO_idOrden = o.idOrden "
              + "WHERE o.servicioPrescrito = :servicioPrescrito "
-             + "  AND c.fecha BETWEEN SYSDATE AND (SYSDATE + 28)",
+             + "  AND c.fecha BETWEEN CURRENTDATE AND (CURRENTDATE + 28)",
        nativeQuery = true)
     Collection<Cita> citasProximas4SemanasPorServicio(@Param("servicioPrescrito") String servicioPrescrito);
 

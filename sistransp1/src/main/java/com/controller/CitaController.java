@@ -147,18 +147,13 @@ public class CitaController {
                                     .body("Cita de " + Tiposervicio + " agendada sin orden");
             }
             else {
-                
+
                 OrdenDeServicio orden = ordendeservicioRepository.obtenerOrdenPorId(cita.getIdOrdenServicio());
                 if (orden == null) {
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                                        .body("La orden especificada no existe");
+                            .body("La orden especificada no existe");
                 }
-                
-                String serv = orden.getServicioPrescrito().toLowerCase();
-                if (serv.contains("general") || serv.contains("urgencia")) {
-                    
-                }
-                
+
                 citaRepository.insertarCita(
                     cita.getIdCita(),
                     cita.getFecha(),
