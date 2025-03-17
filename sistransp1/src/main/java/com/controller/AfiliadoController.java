@@ -22,8 +22,7 @@ public class AfiliadoController {
     @Autowired
     private AfiliadoRepository afiliadoRepository;
 
-    
-    @GetMapping("/afiliados")
+    @GetMapping
     public ResponseEntity<Collection<Afiliado>> listarAfiliados() {
         try {
             Collection<Afiliado> afiliados = afiliadoRepository.obtenerTodosLosAfiliados();
@@ -33,8 +32,7 @@ public class AfiliadoController {
         }
     }
 
-    
-    @PostMapping("/afiliados/new/save")
+    @PostMapping("/new/save")
     public ResponseEntity<String> crearAfiliado(@RequestBody Afiliado afiliado) {
         try {
             afiliadoRepository.insertarAfiliado(
@@ -55,8 +53,7 @@ public class AfiliadoController {
         }
     }
 
-   
-    @PostMapping("/afiliados/{id}/edit/save")
+    @PostMapping("/{id}/edit/save")
     public ResponseEntity<String> editarAfiliado(@PathVariable("id") long id, @RequestBody Afiliado afiliado) {
         try {
             afiliadoRepository.actualizarAfiliado(
@@ -77,8 +74,7 @@ public class AfiliadoController {
         }
     }
 
-    
-    @GetMapping("/afiliados/{id}/delete")
+    @GetMapping("/{id}/delete")
     public ResponseEntity<String> eliminarAfiliado(@PathVariable("id") long id) {
         try {
             afiliadoRepository.eliminarAfiliado(id);
