@@ -45,4 +45,24 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
     @Transactional
     @Query(value = "DELETE FROM CITA WHERE idCita = :idCita", nativeQuery = true)
     void eliminarCita(@Param("idCita") long idCita);
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE CITA SET estado = 'REALIZADA' " +
+                "WHERE idCita = :idCita", nativeQuery = true)
+    void marcarCitaRealizada(@Param("idCita") long idCita);
+
+
+    @Query(value = "SELECT c.* "
+             + "FROM CITA c "
+             + "JOIN ORDEN_DE_SERVICIO o ON c.ORDEN_DE_SERVICIO_idOrden = o.idOrden "
+             + "WHERE o.servicioPrescrito = :servicioPrescrito "
+             + "  AND c.fecha BETWEEN SYSDATE AND (SYSDATE + 28)",
+       nativeQuery = true)
+    Collection<Cita> citasProximas4SemanasPorServicio(@Param("servicioPrescrito") String servicioPrescrito);
+
+
+
+
 }

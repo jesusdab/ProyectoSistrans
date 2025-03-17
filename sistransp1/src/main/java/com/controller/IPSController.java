@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.modelo.IPS;
 import com.repositorio.IpsRepository;
+import com.repositorio.IpsServicioRepository;
+import com.repositorio.ServicioDeSaludRepository;
 
 @RestController
 @RequestMapping("/ips")
@@ -21,6 +23,13 @@ public class IPSController {
 
     @Autowired
     private IpsRepository ipsRepository;
+
+    @Autowired
+    private IpsServicioRepository servicioRepository;
+
+    @Autowired
+    private ServicioDeSaludRepository servicioSaludRepository;
+
 
     /**
      * GET /ips
@@ -93,4 +102,30 @@ public class IPSController {
             return new ResponseEntity<>("Error al eliminar la IPS", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping("{id}/servicios/{idServicio}")
+    public ResponseEntity<String> asignarServicio(@PathVariable("id") Long id, @PathVariable("idServicio") Long idServicio
+    ){
+        try {
+
+            if(ipsRepository.darIPS(id)==null){
+              return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La IPS con nit="+id+"no existe");
+            }
+
+            if(servicioSaludRepository.obtenerServicioPorId(idServicio) ==null){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El servicio con id ="+idServicio+"no existe");
+              }
+
+            servicioRepository.asignarServicio(id, idServicio);
+
+            return ResponseEntity.ok("Servicio asignado a la IPS con éxito");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body("Error al asignar servicio: " + e.getMessage());
+        }
+
+            
 }
+}
+
+
