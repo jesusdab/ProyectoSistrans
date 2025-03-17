@@ -1,11 +1,8 @@
 package com.modelo;
 
-
-import java.sql.Date;
+import java.util.Date;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -14,7 +11,6 @@ import jakarta.persistence.Table;
 public class Afiliado {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idPaciente;
 
     private String nombre;
@@ -35,22 +31,7 @@ public class Afiliado {
 
     private Long idContribuyente;
 
-    public Afiliado() 
-    {;}
-
-    public Afiliado(String nombre, String tipoIdentificacion, Long numeroIdentificacion,
-                    Date fechaNacimiento, String direccionResidencia, Long telefono, String empresaAfiliado, 
-                    String tipoParentesco, Long idContribuyente) {
-        this.nombre = nombre;
-        this.tipoIdentificacion = tipoIdentificacion;
-        this.numeroIdentificacion = numeroIdentificacion;
-        this.fechaNacimiento = fechaNacimiento;
-        this.direccionResidencia = direccionResidencia;
-        this.telefono = telefono;
-        this.empresaAfiliado = empresaAfiliado;
-        this.tipoParentesco = tipoParentesco;
-        this.idContribuyente = idContribuyente;
-    }
+    // Getters and setters
 
     public Long getIdPaciente() {
         return idPaciente;

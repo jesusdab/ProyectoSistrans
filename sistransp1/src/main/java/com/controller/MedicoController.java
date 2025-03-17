@@ -9,19 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.modelo.Medico;
 import com.repositorio.MedicoRepository;
 
 @RestController
+@RequestMapping("/medicos")
 public class MedicoController {
 
     @Autowired
     private MedicoRepository medicoRepository;
 
-
-    @GetMapping("/medicos")
+    @GetMapping
     public ResponseEntity<Collection<Medico>> listarMedicos() {
         try {
             Collection<Medico> medicos = medicoRepository.obtenerTodosLosMedicos();
@@ -31,7 +32,7 @@ public class MedicoController {
         }
     }
 
-    @PostMapping("/medicos/new/save")
+    @PostMapping("/new/save")
     public ResponseEntity<String> crearMedico(@RequestBody Medico medico) {
         try {
             medicoRepository.insertarMedico(
@@ -47,8 +48,7 @@ public class MedicoController {
         }
     }
 
-   
-    @PostMapping("/medicos/{registro}/edit/save")
+    @PostMapping("/{registro}/edit/save")
     public ResponseEntity<String> editarMedico(
             @PathVariable("registro") Long registro,
             @RequestBody Medico medico
@@ -67,8 +67,7 @@ public class MedicoController {
         }
     }
 
-
-    @GetMapping("/medicos/{registro}/delete")
+    @GetMapping("/{registro}/delete")
     public ResponseEntity<String> eliminarMedico(@PathVariable("registro") String registro) {
         try {
             medicoRepository.eliminarMedico(registro);

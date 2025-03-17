@@ -3,6 +3,7 @@ package com.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,20 @@ public class AfiliadoController {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Afiliado> obtenerAfiliadoPorId(@PathVariable("idPaciente") long id) {
+        try {
+            Afiliado afiliado = afiliadoRepository.obtenerAfiliadoPorId(id);
+            if (afiliado != null) {
+                return ResponseEntity.ok(afiliado);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @PostMapping("/new/save")
     public ResponseEntity<String> crearAfiliado(@RequestBody Afiliado afiliado) {
         try {
@@ -48,6 +63,8 @@ public class AfiliadoController {
                 afiliado.getIdContribuyente()
             );
             return new ResponseEntity<>("Afiliado creado exitosamente", HttpStatus.CREATED);
+        } catch (DataIntegrityViolationException e) {
+            return new ResponseEntity<>("Error: El idPaciente ya existe", HttpStatus.CONFLICT);
         } catch (Exception e) {
             return new ResponseEntity<>("Error al crear el afiliado", HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -1,10 +1,8 @@
 package com.repositorio;
 
-import java.sql.Date;
 import java.util.Collection;
+import java.util.Date;
 
-import com.modelo.Afiliado;
-import com.modelo.Medico;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -23,23 +21,23 @@ public interface OrdenDeServicioRepository extends JpaRepository<OrdenDeServicio
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO ORDEN_DE_SERVICIO (idOrden, fecha, servicioPrescrito, estado, MEDICO_numeroRegistroMedico, AFILIADO_idPaciente) VALUES (:idOrden, TO_DATE(:fecha, 'YYYY-MM-DD'), :servicioPrescrito, :estado, :numeroRegistroMedico, :idPaciente)", nativeQuery = true)
-    void insertarOrden(@Param("idOrden") Long idOrden,
-                       @Param("fecha") Date fecha,
+    @Query(value = "INSERT INTO ORDEN_DE_SERVICIO (idOrden, fecha, servicioPrescrito, estado, numeroRegistroMedico, idPaciente) VALUES (:idOrden, :fecha, :servicioPrescrito, :estado, :numeroRegistroMedico, :idPaciente)", nativeQuery = true)
+    void insertarOrden(@Param("idOrden") Long idOrden, 
+                       @Param("fecha") Date fecha, 
                        @Param("servicioPrescrito") String servicioPrescrito, 
                        @Param("estado") String estado, 
-                       @Param("Medico") Medico medico,
-                       @Param("Afiliado") Afiliado afiliado);
+                       @Param("numeroRegistroMedico") Long numeroRegistroMedico, 
+                       @Param("idPaciente") Long idPaciente);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE ORDEN_DE_SERVICIO SET fecha = TO_DATE(:fecha, 'YYYY-MM-DD'), servicioPrescrito = :servicioPrescrito, estado = :estado, MEDICO_numeroRegistroMedico = :numeroRegistroMedico, AFILIADO_idPaciente = :idPaciente WHERE idOrden = :idOrden", nativeQuery = true)
-    void actualizarOrden(@Param("idOrden") Long idOrden,
-                         @Param("fecha") Date fecha,
+    @Query(value = "UPDATE ORDEN_DE_SERVICIO SET fecha = :fecha, servicioPrescrito = :servicioPrescrito, estado = :estado, numeroRegistroMedico = :numeroRegistroMedico, idPaciente = :idPaciente WHERE idOrden = :idOrden", nativeQuery = true)
+    void actualizarOrden(@Param("idOrden") Long idOrden, 
+                         @Param("fecha") Date fecha, 
                          @Param("servicioPrescrito") String servicioPrescrito, 
-                         @Param("estado") String estado,
-                         @Param("Medico") Medico medico,
-                         @Param("Afiliado") Afiliado afiliado);
+                         @Param("estado") String estado, 
+                         @Param("numeroRegistroMedico") Long numeroRegistroMedico, 
+                         @Param("idPaciente") Long idPaciente);
 
     @Modifying
     @Transactional

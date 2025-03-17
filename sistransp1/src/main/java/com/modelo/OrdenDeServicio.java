@@ -1,6 +1,6 @@
 package com.modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,8 +29,7 @@ public class OrdenDeServicio {
     @ManyToOne
     private Afiliado afiliado;
 
-    public OrdenDeServicio() 
-    {;}
+    public OrdenDeServicio() {}
 
     public OrdenDeServicio(Date fecha, String servicioPrescrito, String estado, Medico medico, Afiliado afiliado) {
         this.fecha = fecha;

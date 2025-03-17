@@ -20,14 +20,12 @@ public class IPS {
     private String direccionIPS;
     private Long telefono ;
     private String tipo;
-    private List<String> serviciosPrestados;
 
-    public IPS(String nombre, String direccionIPS, Long telefono, String tipo, List<String> serviciosPrestados) {
+    public IPS(String nombre, String direccionIPS, Long telefono, String tipo) {
         this.nombre = nombre;
         this.direccionIPS = direccionIPS;
         this.telefono = telefono;
         this.tipo = tipo;
-        this.serviciosPrestados = serviciosPrestados;
     }
 
     public IPS() 
@@ -73,13 +71,5 @@ public class IPS {
 
     public String getNombre() {
         return nombre;
-    }
-
-    public List<String> getServiciosPrestados() {
-        return serviciosPrestados;
-    }
-
-    public void setServiciosPrestados(List<String> serviciosPrestados) {
-        this.serviciosPrestados = serviciosPrestados;
     }
 }

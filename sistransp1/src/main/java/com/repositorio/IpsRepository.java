@@ -22,23 +22,22 @@ public interface IpsRepository extends JpaRepository<IPS,Long>{
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO IPS (nit, tipo, nombre, direccion, telefono, serviciosPrestados) VALUES (:nit, :tipo, :nombre, :direccion, :telefono, :serviciosPrestados)", nativeQuery = true)
+    @Query(value = "INSERT INTO IPS (nit, tipo, nombre, direccion, telefono) VALUES (:nit, :tipo, :nombre, :direccion, :telefono)", nativeQuery = true)
     void insertarIPS(@Param("nit") Long nit,
                      @Param("tipo") String tipo, 
                      @Param("nombre") String nombre, 
                      @Param("direccion") String direccion, 
-                     @Param("telefono") Long telefono,
-                     @Param("serviciosPrestados") List<String> serviciosPrestados);
+                     @Param("telefono") Long telefono);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE IPS SET tipo = :tipo, nombre = :nombre, direccion = :direccion, telefono = :telefono, serviciosPrestados = :serviciosPrestados WHERE nit = :nit", nativeQuery = true)
+    @Query(value = "UPDATE IPS SET tipo = :tipo, nombre = :nombre, direccion = :direccion, telefono = :telefono WHERE nit = :nit", nativeQuery = true)
     void actualizarIPS(@Param("nit") Long nit,
                        @Param("tipo") String tipo, 
                        @Param("nombre") String nombre, 
                        @Param("direccion") String direccion, 
-                       @Param("telefono") Long telefono,
-                       @Param("serviciosPrestados") List<String> serviciosPrestados);
+                       @Param("telefono") Long telefono);
+
 
     @Modifying
     @Transactional

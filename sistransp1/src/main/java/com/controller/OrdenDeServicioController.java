@@ -20,7 +20,6 @@ public class OrdenDeServicioController {
     @Autowired
     private OrdenDeServicioRepository ordenDeServicioRepository;
 
-    
     @GetMapping("/ordenes")
     public ResponseEntity<Collection<OrdenDeServicio>> listarOrdenes() {
         try {
@@ -31,17 +30,16 @@ public class OrdenDeServicioController {
         }
     }
 
-    
     @PostMapping("/ordenes/new/save")
     public ResponseEntity<String> crearOrden(@RequestBody OrdenDeServicio orden) {
         try {
             ordenDeServicioRepository.insertarOrden(
                 orden.getIdOrden(),
-                orden.getFecha(),            // Debe ser 'YYYY-MM-DD'
+                orden.getFecha(),            
                 orden.getServicioPrescrito(),
                 orden.getEstado(),
-                orden.getMedico(),          // En tu repositorio se mapea a numeroRegistroMedico
-                orden.getAfiliado()         // Se mapea a idPaciente
+                orden.getMedico().getNumeroRegistroMedico(),          
+                orden.getAfiliado().getIdPaciente()         
             );
             return new ResponseEntity<>("Orden de servicio creada exitosamente", HttpStatus.CREATED);
         } catch (Exception e) {
@@ -49,7 +47,6 @@ public class OrdenDeServicioController {
         }
     }
 
-    
     @PostMapping("/ordenes/{id}/edit/save")
     public ResponseEntity<String> editarOrden(@PathVariable("id") Long id, @RequestBody OrdenDeServicio orden) {
         try {
@@ -58,8 +55,8 @@ public class OrdenDeServicioController {
                 orden.getFecha(),
                 orden.getServicioPrescrito(),
                 orden.getEstado(),
-                orden.getMedico(),
-                orden.getAfiliado()
+                orden.getMedico().getNumeroRegistroMedico(),
+                orden.getAfiliado().getIdPaciente()
             );
             return new ResponseEntity<>("Orden de servicio actualizada exitosamente", HttpStatus.OK);
         } catch (Exception e) {

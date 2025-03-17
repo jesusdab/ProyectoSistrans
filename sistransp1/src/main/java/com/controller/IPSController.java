@@ -57,8 +57,7 @@ public class IPSController {
                 ips.getTipo(),
                 ips.getNombre(),
                 ips.getDireccionIPS(),
-                ips.getTelefono(),
-                ips.getServiciosPrestados()
+                ips.getTelefono()
             );
             return new ResponseEntity<>("IPS creada exitosamente", HttpStatus.CREATED);
         } catch (Exception e) {
@@ -80,8 +79,7 @@ public class IPSController {
                 ips.getTipo(),
                 ips.getNombre(),
                 ips.getDireccionIPS(),
-                ips.getTelefono(),
-                ips.getServiciosPrestados()
+                ips.getTelefono()
             );
             return ResponseEntity.ok("IPS actualizada exitosamente");
         } catch (Exception e) {
