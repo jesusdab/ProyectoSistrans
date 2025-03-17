@@ -1,4 +1,4 @@
-package com.proyectosistrans.sistransp1;
+package com;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
