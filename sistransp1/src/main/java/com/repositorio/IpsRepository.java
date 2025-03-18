@@ -1,7 +1,6 @@
 package com.repositorio;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -17,7 +16,7 @@ public interface IpsRepository extends JpaRepository<IPS,Long>{
     @Query(value="SELECT * FROM IPS",nativeQuery=true)
     Collection<IPS> darIPSs();
 
-    @Query(value="SELECT * FROM IPS WHERE nit= nit",nativeQuery=true)
+    @Query(value="SELECT * FROM IPS WHERE nit = :nit",nativeQuery=true)
     IPS darIPS(@Param("nit") Long nit);
 
     @Modifying

@@ -31,7 +31,7 @@ public class Afiliado {
 
     private Long afiliado_idPaciente;
 
-    // Getters and setters
+    
 
     public Long getIdPaciente() {
         return idPaciente;
