@@ -29,7 +29,7 @@ public class Afiliado {
 
     private String tipoParentesco;
 
-    private Long idContribuyente;
+    private Long afiliado_idPaciente;
 
     // Getters and setters
 
@@ -106,10 +106,10 @@ public class Afiliado {
     }
 
     public Long getIdContribuyente() {
-        return idContribuyente;
+        return afiliado_idPaciente;
     }
 
-    public void setIdContribuyente(Long idContribuyente) {
-        this.idContribuyente = idContribuyente;
+    public void setIdContribuyente(Long afiliado_idPaciente) {
+        this.afiliado_idPaciente = afiliado_idPaciente;
     }
 }

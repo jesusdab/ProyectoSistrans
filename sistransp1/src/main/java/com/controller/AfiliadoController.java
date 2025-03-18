@@ -34,7 +34,7 @@ public class AfiliadoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Afiliado> obtenerAfiliadoPorId(@PathVariable("idPaciente") long id) {
+    public ResponseEntity<Afiliado> obtenerAfiliadoPorId(@PathVariable("id") long id) {
         try {
             Afiliado afiliado = afiliadoRepository.obtenerAfiliadoPorId(id);
             if (afiliado != null) {
