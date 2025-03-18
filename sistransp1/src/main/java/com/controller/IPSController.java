@@ -31,10 +31,7 @@ public class IPSController {
     private ServicioDeSaludRepository servicioSaludRepository;
 
 
-    /**
-     * GET /ips
-     * Devuelve todas las IPS en formato JSON.
-     */
+    
     @GetMapping
     public ResponseEntity<Collection<IPS>> listarIPS() {
         try {
@@ -45,10 +42,7 @@ public class IPSController {
         }
     }
 
-    /**
-     * POST /ips/new/save
-     * Crea una nueva IPS. Los datos llegan en el body como JSON.
-     */
+    
     @PostMapping("/new/save")
     public ResponseEntity<String> guardarIPS(@RequestBody IPS ips) {
         try {
@@ -56,7 +50,7 @@ public class IPSController {
                 ips.getNit(),
                 ips.getTipo(),
                 ips.getNombre(),
-                ips.getDireccionIPS(),
+                ips.getDireccion(),
                 ips.getTelefono()
             );
             return new ResponseEntity<>("IPS creada exitosamente", HttpStatus.CREATED);
@@ -65,10 +59,7 @@ public class IPSController {
         }
     }
 
-    /**
-     * POST /ips/{id}/edit/save
-     * Actualiza la IPS con el nit = {id}. Los datos llegan como JSON.
-     */
+    
     @PostMapping("/{id}/edit/save")
     public ResponseEntity<String> guardarEdicionIPS(
             @PathVariable("id") Long nit,
@@ -78,7 +69,7 @@ public class IPSController {
                 nit,
                 ips.getTipo(),
                 ips.getNombre(),
-                ips.getDireccionIPS(),
+                ips.getDireccion(),
                 ips.getTelefono()
             );
             return ResponseEntity.ok("IPS actualizada exitosamente");
@@ -87,10 +78,7 @@ public class IPSController {
         }
     }
 
-    /**
-     * GET /ips/{id}/delete
-     * Elimina la IPS cuyo nit = {id}.
-     */
+    
     @GetMapping("/{id}/delete")
     public ResponseEntity<String> eliminarIPS(@PathVariable("id") Long id) {
         try {

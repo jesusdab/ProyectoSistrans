@@ -6,8 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.util.List;
-
 @Entity
 @Table(name = "ips_registradas")
 public class IPS {
@@ -17,13 +15,13 @@ public class IPS {
     private Long nit;
 
     private String nombre;
-    private String direccionIPS;
+    private String direccion;
     private Long telefono ;
     private String tipo;
 
-    public IPS(String nombre, String direccionIPS, Long telefono, String tipo) {
+    public IPS(String nombre, String direccion, Long telefono, String tipo) {
         this.nombre = nombre;
-        this.direccionIPS = direccionIPS;
+        this.direccion = direccion;
         this.telefono = telefono;
         this.tipo = tipo;
     }
@@ -32,7 +30,7 @@ public class IPS {
     {;}
     
     
-    // Getters y Setters
+   
     public Long getNit() {
         return nit;
     }
@@ -41,12 +39,12 @@ public class IPS {
         this.nit = nit;
     }
 
-    public String getDireccionIPS() {
-        return direccionIPS;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDireccionIPS(String direccionIPS) {
-        this.direccionIPS = direccionIPS;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public Long getTelefono() {

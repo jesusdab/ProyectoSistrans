@@ -14,8 +14,8 @@ public interface IpsServicioRepository extends JpaRepository<IpsServicio, Long> 
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO IPS_SERVICIO (nit, idServicio) VALUES (:nit, :idServicio)", nativeQuery = true)
-    void asignarServicio(@Param("nit") long nit, @Param("idServicio") long idServicio);
+    @Query(value = "INSERT INTO Servicio_ofrecido (Servicio_de_salud_Idservicio, ips_nit) VALUES (:Servicio_de_salud_Idservicio, :ips_nit)", nativeQuery = true)
+    void asignarServicio(@Param("Servicio_de_salud_Idservicio") long nit, @Param("ips_nit") long idServicio);
 
     
 }
